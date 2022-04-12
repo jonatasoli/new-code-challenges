@@ -69,3 +69,42 @@ Para cada tentativa exibir uma mensagem com o numero da tentativa.
 
 ## Fase 5 - Arrays
 
+Colocar um limite de tentativas de acertar o número para 5. Por conta disso vamos verificar se um número já foi digitado anteriormente naquele jogo.
+
+Casos de teste:
+- Testar a função do jogo para fazer 5 tentativas caso não acertar retornar o game over do jogo.
+- Tentar inserir duas vezes o mesmo número do jogo, deve retornar um erro de tentativas.
+
+Requerimentos:
+- Guardar tentativas num array ou similar
+- A função de lógica do jogo só deve retornar o resultado do jogo ou alguma excessão.
+
+## Fase 6 - Pontuação
+
+O jogo vai inicar com 200 pontos, para cada tentativa que o usuário fizer e não acertar ele perde parte desses pontos.
+
+Por	exemplo, se o número é o 75 e ele chuta	15,	ele	errou por 60, então	o jogador perde	30 pontos. Isto	é, ele perde a diferença entre os dois números dividida	por	dois.
+A cada novo	chute, calculamos a	diferença que erramos, chute menos o numero_secreto:
+```
+pontos_a_perder	= chute	- numero_secreto
+```
+Agora queremos dividir (/) este	valor por 2:
+```
+pontos_a_perder	= chute	- numero_secreto / 2
+```
+Por	fim, tiramos dos pontos	até	agora os pontos	a perder:
+```
+pontos_ate_agora = pontos_ate_agora	- pontos_a_perder
+```
+Quando o usuário acertar o número, mostrar a pontuação que ele conseguiu.
+
+Caso de testes:
+- Definir o número 75 como número secreto e chutar o número 15 e verificar se a pontuação diminuiu para 140. 
+- Definir o número 75 como número secreto e chutar o número 76 e verificar se a pontuação diminuiu para 199.5. 
+- Definir o número 75 como número secreto e chutar o número 74 e verificar se a pontuação diminuiu para 199.5. 
+- Definir o número 75 como número secreto e chutar o número 75 e verificar a mensagem de fim de jogo com a pontuação 200.
+- Definir o número 75 como número secreto e chutar o respectivamente o número 65 e 75 e verificar a mensagem de fim de jogo com a pontuação 190.
+
+Requerimentos:
+- A pontuação tem que aceitar ponto flutante (ex:. 199.5, 144.75 e etc) 
+- A perda de pontos para um chute maior ou menor sempre tem que ser a diferença ou seja se ele perde 10 pontos independente se o chute foi pra um número maior ou menor.
